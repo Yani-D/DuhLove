@@ -63,76 +63,77 @@
       </div>
     </section>
 
-    <!-- COLLECTION SECTION -->
-   <section class="collection" id="collection">
-  <div class="collection-inner">
-    <h2>Design Collection</h2>
-    <p class="collection-subtitle">
-      A glimpse into Julia’s world of pattern – from playful to poetic.
-    </p>
+       <!-- COLLECTION SECTION -->
+    <section class="collection" id="collection">
+      <div class="collection-inner">
+        <h2>Design Collection</h2>
+        <p class="collection-subtitle">
+          A glimpse into Julia’s world of pattern – from playful to poetic.
+        </p>
 
-    <div class="card-grid">
-      <!-- CARD 1 – Botanical Whimsy (отворя галерията) -->
-      <article class="card card-botanical" role="button" tabindex="0">
-        <div class="card-image">
-          <img src="img/botanical/botanical-01.jpg" alt="Botanical Whimsy sample pattern" />
-        </div>
-        <div class="card-body">
-          <h3>Botanical Whimsy</h3>
-          <p>
-            Delicate yet bold florals that bring elegance and movement to any surface.
-          </p>
-        </div>
-      </article>
+        <div class="card-grid">
+          <!-- CARD 1 – Botanical -->
+          <article class="card card-gallery" data-gallery="botanical" role="button" tabindex="0">
+            <div class="card-image">
+              <img src="img/botanical/botanical-01.jpg" alt="Botanical Whimsy sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Botanical Whimsy</h3>
+              <p>
+                Delicate yet bold florals that bring elegance and movement to any surface.
+              </p>
+            </div>
+          </article>
 
-      <!-- CARD 2 -->
-      <article class="card">
-        <div class="card-image">
-          <img src="img/stones.jpeg" alt="Playful Geometrics sample pattern" />
-        </div>
-        <div class="card-body">
-          <h3>Playful Geometrics</h3>
-          <p>
-            Joyful shapes and colour-blocking inspired by childhood memories and toys.
-          </p>
-        </div>
-      </article>
+          <!-- CARD 2 – Geoforms -->
+          <article class="card card-gallery" data-gallery="geoforms" role="button" tabindex="0">
+            <div class="card-image">
+              <img src="img/geoforms/geoforms-01.jpg" alt="Playful Geometrics sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Playful Geometrics</h3>
+              <p>
+                Joyful shapes and colour-blocking inspired by childhood memories and toys.
+              </p>
+            </div>
+          </article>
 
-      <!-- CARD 3 -->
-      <article class="card">
-        <div class="card-image">
-          <img src="img/yoga.jpeg" alt="Modern Wellness sample pattern" />
-        </div>
-        <div class="card-body">
-          <h3>Modern Wellness</h3>
-          <p>
-            Folk-inspired motifs reimagined with a contemporary twist for modern interiors.
-          </p>
-        </div>
-      </article>
+          <!-- CARD 3 – Wellness -->
+          <article class="card card-gallery" data-gallery="wellness" role="button" tabindex="0">
+            <div class="card-image">
+              <img src="img/wellness/wellness-01.jpg" alt="Modern Wellness sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Modern Wellness</h3>
+              <p>
+                Folk-inspired motifs reimagined with a contemporary twist for modern interiors.
+              </p>
+            </div>
+          </article>
 
-      <!-- CARD 4 – Christmas / Winter collection -->
-      <article class="card">
-        <div class="card-image">
-          <img src="img/christmas.jpg" alt="Winter Holiday Magic sample pattern" />
+          <!-- CARD 4 – Christmas -->
+          <article class="card card-gallery" data-gallery="christmas" role="button" tabindex="0">
+            <div class="card-image">
+              <img src="img/christmas/christmas-01.jpg" alt="Winter Holiday Magic sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Winter Holiday Magic</h3>
+              <p>
+                Cozy festive motifs with lights, snow and storytelling for the holiday season.
+              </p>
+            </div>
+          </article>
         </div>
-        <div class="card-body">
-          <h3>Winter Holiday Magic</h3>
-          <p>
-            Cozy festive motifs with lights, snow and storytelling for the holiday season.
-          </p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
+
 
   </main>
   
-  <!-- LIGHTBOX за Botanical Whimsy -->
-  <div class="lightbox" id="botanical-lightbox" aria-hidden="true">
+    <!-- LIGHTBOX – общ за всички колекции -->
+  <div class="lightbox" id="gallery-lightbox" aria-hidden="true">
     <div class="lightbox-backdrop"></div>
-    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Botanical Whimsy gallery">
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Pattern gallery">
       <button class="lightbox-close" aria-label="Close gallery">✕</button>
       <button class="lightbox-arrow prev" aria-label="Previous image">‹</button>
       <button class="lightbox-arrow next" aria-label="Next image">›</button>
@@ -143,11 +144,12 @@
     </div>
   </div>
 
+
   <footer class="site-footer">
     <p>© <span id="year"></span> DuhLove · All rights reserved.</p>
   </footer>
 
-  <script>
+    <script>
     // година
     const yearEl = document.getElementById("year");
     if (yearEl) {
@@ -181,124 +183,164 @@
       });
     }
 
-    // ---- LIGHTBOX / GALLERY за Botanical Whimsy ----
- // колко снимки имаме в img/botanical/
-const BOTANICAL_COUNT = 8; // тук само сменяш числото при нови снимки
+    // ---- GALLERIES ----
+    // тук само променяш числата според броя файлове във всяка папка
+    const BOTANICAL_COUNT = 9;
+    const GEOFORMS_COUNT  = 5;
+    const WELLNESS_COUNT  = 6;
+    const CHRISTMAS_COUNT = 6;
 
-const botanicalImages = Array.from({ length: BOTANICAL_COUNT }, (_, index) => {
-  const num = String(index + 1).padStart(2, "0"); // 1 -> "01", 2 -> "02", ...
-  return {
-    src: `img/botanical/botanical-${num}.jpg`,
-    alt: `Botanical Whimsy pattern ${index + 1} by Julia Duhlyovska`,
-    caption: `Botanical Whimsy · ${index + 1}`
-  };
-});
+    const GALLERIES = {
+      botanical: {
+        label: "Botanical Whimsy",
+        folder: "botanical",
+        prefix: "botanical",
+        count: BOTANICAL_COUNT,
+      },
+      geoforms: {
+        label: "Playful Geometrics",
+        folder: "geoforms",
+        prefix: "geoforms",
+        count: GEOFORMS_COUNT,
+      },
+      wellness: {
+        label: "Modern Wellness",
+        folder: "wellness",
+        prefix: "wellness",
+        count: WELLNESS_COUNT,
+      },
+      christmas: {
+        label: "Winter Holiday Magic",
+        folder: "christmas",
+        prefix: "christmas",
+        count: CHRISTMAS_COUNT,
+      },
+    };
 
+    const lightbox      = document.getElementById("gallery-lightbox");
+    const lightboxImg   = lightbox.querySelector(".lightbox-image");
+    const lightboxCap   = lightbox.querySelector(".lightbox-caption");
+    const lightboxPrev  = lightbox.querySelector(".lightbox-arrow.prev");
+    const lightboxNext  = lightbox.querySelector(".lightbox-arrow.next");
+    const lightboxClose = lightbox.querySelector(".lightbox-close");
+    const lightboxBack  = lightbox.querySelector(".lightbox-backdrop");
 
-    const lightbox       = document.getElementById("botanical-lightbox");
-    const lightboxImg    = lightbox.querySelector(".lightbox-image");
-    const lightboxCap    = lightbox.querySelector(".lightbox-caption");
-    const lightboxPrev   = lightbox.querySelector(".lightbox-arrow.prev");
-    const lightboxNext   = lightbox.querySelector(".lightbox-arrow.next");
-    const lightboxClose  = lightbox.querySelector(".lightbox-close");
-    const lightboxBack   = lightbox.querySelector(".lightbox-backdrop");
-    const cardBotanical  = document.querySelector(".card-botanical");
+    let currentGalleryKey = null;
+    let currentIndex      = 0;
 
-    let botanicalIndex = 0;
+    function getCurrentGallery() {
+      if (!currentGalleryKey) return null;
+      return GALLERIES[currentGalleryKey] || null;
+    }
 
-function updateArrows() {
-  if (!lightboxPrev || !lightboxNext) return;
+    function updateArrows() {
+      const g = getCurrentGallery();
+      if (!g || !lightboxPrev || !lightboxNext) return;
 
-  const atFirst = botanicalIndex === 0;
-  const atLast  = botanicalIndex === botanicalImages.length - 1;
+      const atFirst = currentIndex === 0;
+      const atLast  = currentIndex === g.count - 1;
 
-  lightboxPrev.disabled = atFirst;
-  lightboxNext.disabled = atLast;
+      lightboxPrev.disabled = atFirst;
+      lightboxNext.disabled = atLast;
 
-  lightboxPrev.classList.toggle("disabled", atFirst);
-  lightboxNext.classList.toggle("disabled", atLast);
-}
+      lightboxPrev.classList.toggle("disabled", atFirst);
+      lightboxNext.classList.toggle("disabled", atLast);
+    }
 
-function showBotanicalSlide(index) {
-  if (!botanicalImages.length) return;
+    function showSlide(index) {
+      const g = getCurrentGallery();
+      if (!g || !g.count) return;
 
-  // ограничаваме между 0 и последния индекс
-  const lastIndex = botanicalImages.length - 1;
-  botanicalIndex = Math.max(0, Math.min(index, lastIndex));
+      const lastIndex = g.count - 1;
+      currentIndex = Math.max(0, Math.min(index, lastIndex));
 
-  const current = botanicalImages[botanicalIndex];
-  lightboxImg.src = current.src;
-  lightboxImg.alt = current.alt;
-  lightboxCap.textContent = current.caption;
+      const num = String(currentIndex + 1).padStart(2, "0");
+      const src = `img/${g.folder}/${g.prefix}-${num}.jpg`;
 
-  updateArrows();
-}
+      lightboxImg.src = src;
+      lightboxImg.alt = `${g.label} pattern ${currentIndex + 1} by Julia Duhlyovska`;
+      lightboxCap.textContent = `${g.label} · ${currentIndex + 1}`;
 
+      updateArrows();
+    }
 
-    function openBotanicalLightbox(startIndex = 0) {
-      if (!lightbox) return;
-      showBotanicalSlide(startIndex);
+    function openGallery(galleryKey, startIndex = 0) {
+      const g = GALLERIES[galleryKey];
+      if (!g || !lightbox) return;
+
+      currentGalleryKey = galleryKey;
+      showSlide(startIndex);
+
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.classList.add("no-scroll");
     }
 
-    function closeBotanicalLightbox() {
+    function closeGallery() {
       if (!lightbox) return;
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
       document.body.classList.remove("no-scroll");
     }
 
-    if (cardBotanical) {
-      cardBotanical.addEventListener("click", () => openBotanicalLightbox(0));
+    // клик по картите
+    document.querySelectorAll(".card-gallery").forEach((card) => {
+      const galleryKey = card.dataset.gallery;
+      if (!galleryKey) return;
+
+      card.addEventListener("click", () => openGallery(galleryKey, 0));
+
       // клавиатура (Enter / Space)
-      cardBotanical.addEventListener("keydown", (e) => {
+      card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          openBotanicalLightbox(0);
+          openGallery(galleryKey, 0);
         }
       });
-    }
+    });
 
+    // стрелки
     if (lightboxPrev) {
       lightboxPrev.addEventListener("click", (e) => {
         e.stopPropagation();
-        showBotanicalSlide(botanicalIndex - 1);
+        showSlide(currentIndex - 1);
       });
     }
 
     if (lightboxNext) {
       lightboxNext.addEventListener("click", (e) => {
         e.stopPropagation();
-        showBotanicalSlide(botanicalIndex + 1);
+        showSlide(currentIndex + 1);
       });
     }
 
+    // затваряне
     if (lightboxClose) {
       lightboxClose.addEventListener("click", (e) => {
         e.stopPropagation();
-        closeBotanicalLightbox();
+        closeGallery();
       });
     }
 
     if (lightboxBack) {
       lightboxBack.addEventListener("click", () => {
-        closeBotanicalLightbox();
+        closeGallery();
       });
     }
 
-    // затваряне с ESC + стрелки за навигация
+    // ESC + стрелки от клавиатурата
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("open")) return;
+
       if (e.key === "Escape") {
-        closeBotanicalLightbox();
+        closeGallery();
       } else if (e.key === "ArrowRight") {
-        showBotanicalSlide(botanicalIndex + 1);
+        showSlide(currentIndex + 1);
       } else if (e.key === "ArrowLeft") {
-        showBotanicalSlide(botanicalIndex - 1);
+        showSlide(currentIndex - 1);
       }
     });
   </script>
+
 </body>
 </html>

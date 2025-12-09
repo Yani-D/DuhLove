@@ -229,9 +229,11 @@ body {
   cursor: default;
 }
 
-.card-botanical {
-  cursor: pointer; /* само първата карта е кликаема */
+/* всички карти, които отварят галерия */
+.card-gallery {
+  cursor: pointer;
 }
+
 
 .card-image img {
   display: block;
