@@ -2,89 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DuhLove – Art & Surface Design by Julia Duhlyovska</title>
+  <title>DUHLOVE – Textile & Surface Design by Julia Duhlyovska</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="overlay">
-    <header class="site-header">
-      <div class="logo">DUHLOVE</div>
-      <div class="tagline">Surface Pattern & Textile Art</div>
-    </header>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">DUHLOVE</div>
+      <nav class="nav-links">
+        <a href="#top">Home</a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="hero-content">
-      <h1>Textile & Surface Design by <span class="artist-name">Julia Duhlyovska</span></h1>
-      <p class="intro">
-        Expressive patterns for fabric, wallpaper & decor — where color and story meet.
-      </p>
-      <div class="links">
-        <a class="btn" href="https://www.spoonflower.com/en/shop?designer=julia_duhlyovska" target="_blank">
-          <span class="icon">🛍️</span>
-          <span class="text">
-            <span class="title">Explore My Collection</span>
-            <span class="subtitle">on Spoonflower</span>
-          </span>
-        </a>
-        <a class="btn" href="https://www.instagram.com/j.d.patterns/" target="_blank">
-          <span class="icon">📷</span>
-          <span class="text">
-            <span class="title">See Latest Creations</span>
-            <span class="subtitle">@j.d.patterns</span>
-          </span>
-        </a>
-        <a class="btn" href="mailto:julity1@abv.bg">
-          <span class="icon">✉️</span>
-          <span class="text">
-            <span class="title">Let’s Collaborate</span>
-            <span class="subtitle">Contact Julia</span>
-          </span>
-        </a>
-      </div>
-    </main>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <p class="hero-kicker">SURFACE PATTERN & TEXTILE ART</p>
+          <h1>Textile & Surface Design by Julia Duhlyovska</h1>
+          <p class="hero-subtitle">
+            Expressive patterns for fabric, wallpaper & décor — where color and story meet.
+          </p>
 
-    <section class="portfolio">
-      <h2>Design Collection</h2>
-      <div class="grid-gallery">
-        <div class="gallery-item">
-          <div class="gallery-image">🌸</div>
-          <h3>Botanical Whimsy</h3>
-          <p>Delicate yet bold florals that bring elegance to any surface.</p>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-image">🔷</div>
-          <h3>Playful Geometrics</h3>
-          <p>A joyful mix of shapes and colors inspired by childhood memories.</p>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-image">🌾</div>
-          <h3>Modern Folk</h3>
-          <p>A twist on traditional motifs reimagined with a modern flair.</p>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-image">🌊</div>
-          <h3>Underwater Dreams</h3>
-          <p>Flowing designs inspired by sea life and the calm of the ocean.</p>
+          <div class="hero-buttons">
+            <a class="btn primary"
+               href="https://www.spoonflower.com/en/shop?sort=bestSelling&on=fabric&viewAs=product&fabric=petal_signature_cotton&designer=julia_duhlyovska"
+               target="_blank">
+              Explore My Collection
+            </a>
+
+            <a class="btn ghost"
+               href="https://www.instagram.com/j.d.patterns/"
+               target="_blank">
+              See Latest Creations @j.d.patterns
+            </a>
+
+            <a class="btn ghost"
+               href="mailto:julity1@abv.bg">
+              Contact Julia
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="contact">
-      <h2>Contact</h2>
-      <ul>
-        <li><strong>Name:</strong> Julia Duhlyovska</li>
-        <li><strong>Email:</strong> <a href="mailto:julity1@abv.bg">julity1@abv.bg</a></li>
-        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/j.d.patterns/" target="_blank">@j.d.patterns</a></li>
-      </ul>
-    </section>
+    <!-- COLLECTION SECTION -->
+    <section class="collection">
+      <div class="collection-inner">
+        <h2>Design Collection</h2>
+        <p class="collection-subtitle">
+          A glimpse into Julia’s world of pattern – from playful to poetic.
+        </p>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> DuhLove · All rights reserved.</p>
-    </footer>
-  </div>
+        <div class="card-grid">
+          <!-- CARD 1 -->
+          <article class="card">
+            <div class="card-image">
+              <img src="img/botanical.jpg" alt="Botanical Whimsy sample pattern" />
+            </div>img src="img/botanical.jpg" alt="Botanical Whimsy sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Botanical Whimsy</h3>
+              <p>
+                Delicate yet bold florals that bring elegance and movement to any surface.
+              </p>
+            </div>
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="card">
+            <div class="card-image">
+              <img src="img/geometric.jpg" alt="Playful Geometrics sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Playful Geometrics</h3>
+              <p>
+                Joyful shapes and colour-blocking inspired by childhood memories and toys.
+              </p>
+            </div>
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="card">
+            <div class="card-image">
+              <img src="img/folk.jpg" alt="Modern Folk sample pattern" />
+            </div>
+            <div class="card-body">
+              <h3>Modern Folk</h3>
+              <p>
+                Folk-inspired motifs reimagined with a contemporary twist for modern interiors.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> DuhLove · All rights reserved.</p>
+  </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
