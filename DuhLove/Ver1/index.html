@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DuhLove – Art & Surface Design by Julia Duhlyovska</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay">
+    <header class="site-header">
+      <div class="logo">DUHLOVE</div>
+      <div class="tagline">Art & Surface Design</div>
+    </header>
+
+    <main class="hero-content">
+      <h1>Art & surface design by <span class="artist-name">Julia Duhlyovska</span></h1>
+
+      <p class="intro">
+        Bold patterns, playful colour and stories on fabric, wallpaper and home décor.
+      </p>
+
+      <div class="links">
+        <!-- SPOONFLOWER -->
+        <a class="btn spoonflower"
+   href="https://www.spoonflower.com/en/shop?sort=bestSelling&on=fabric&viewAs=product&fabric=petal_signature_cotton&designer=julia_duhlyovska"
+   target="_blank">
+  <span class="icon">
+    <img src="img/spoonflower.png" alt="Spoonflower logo" class="icon-img">
+  </span>
+  <span class="text">
+    <span class="title">Shop my designs</span>
+    <span class="subtitle">on Spoonflower</span>
+  </span>
+</a>
+
+
+        <!-- INSTAGRAM -->
+        <a class="btn instagram"
+   href="https://www.instagram.com/j.d.patterns/"
+   target="_blank">
+  <span class="icon">
+    <img src="img/instagram.png" alt="Instagram logo" class="icon-img">
+  </span>
+  <span class="text">
+    <span class="title">Follow my work</span>
+    <span class="subtitle">@j.d.patterns</span>
+  </span>
+</a>
+
+
+        <!-- EMAIL -->
+        <a class="btn email"
+           href="mailto:julity1@abv.bg">
+          <span class="icon">✉️</span>
+          <span class="text">
+            <span class="title">Get in touch</span>
+            <span class="subtitle">Collaborations</span>
+          </span>
+        </a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> DuhLove · All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* BACKGROUND IMAGE */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff;
+
+  /* фонът с нейния pattern */
+  background-image: url("img/background.png");
+  background-size: cover;      /* запълва екрана */
+  background-position: center; /* центрира изображението */
+  background-repeat: repeat;   /* ако е по-малък, да се повтаря */
+}
+
+
+/* лек воал върху картинката + layout */
+.overlay {
+  min-height: 100vh;
+  background: radial-gradient(circle at top,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.10),
+    rgba(255, 255, 255, 0.20));
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+}
+
+/* HEADER */
+.site-header {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.logo {
+  font-size: 1rem;
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16rem;
+  opacity: 0.8;
+}
+
+/* CENTERED HERO TEXT DIRECTLY ON BACKGROUND */
+.hero-content {
+  flex: 1;
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.artist-name {
+  display: block;
+  font-weight: 700;
+}
+
+.intro {
+  max-width: 520px;
+  margin: 0.5rem auto 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  color: #fff;
+  min-width: 230px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;      /* малък бял кръг зад логото */
+  overflow: hidden;      /* отрязва всичко извън кръга */
+}
+
+/* размер на логата вътре в бутона */
+.icon-img {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  object-fit: contain;
+}
+
+
+.text {
+  text-align: left;
+}
+
+.title {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+}
+
