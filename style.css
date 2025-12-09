@@ -134,6 +134,9 @@ body {
   line-height: 1.2;
   margin-bottom: 1rem;
 }
+.hero-name {
+  white-space: nowrap;   /* не позволява да се пречупи на "Julia" / "Duhlyovska" */
+}
 
 .hero-subtitle {
   max-width: 540px;
@@ -380,6 +383,9 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+
+
+
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
