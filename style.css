@@ -223,6 +223,11 @@ body {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
+  cursor: default;
+}
+
+.card-botanical {
+  cursor: pointer; /* само първата карта е кликаема */
 }
 
 .card-image img {
@@ -256,6 +261,110 @@ body {
   padding: 1rem 1.5rem 1.4rem;
 }
 
+/* ---- LIGHTBOX / GALLERY ---- */
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.lightbox-dialog {
+  position: relative;
+  margin: auto;
+  max-width: 900px;
+  width: calc(100% - 2.5rem);
+  background: #050505;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  padding: 1.5rem 3.5rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.lightbox-image-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  margin-bottom: 0.9rem;
+}
+
+.lightbox-image {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  font-size: 0.9rem;
+  color: #e2ddd8;
+  text-align: left;
+}
+
+/* бутони в lightbox */
+.lightbox-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.9rem;
+  border: none;
+  background: transparent;
+  color: #ffffffcc;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffffdd;
+  cursor: pointer;
+  font-size: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-arrow.prev {
+  left: 0.9rem;
+}
+
+.lightbox-arrow.next {
+  right: 0.9rem;
+}
+
+.lightbox-arrow:hover,
+.lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.lightbox-arrow.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero {
@@ -278,5 +387,18 @@ body {
 
   .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .lightbox-dialog {
+    width: calc(100% - 1.5rem);
+    padding: 1.2rem 2.5rem 1.4rem;
+  }
+
+  .lightbox-arrow.prev {
+    left: 0.5rem;
+  }
+
+  .lightbox-arrow.next {
+    right: 0.5rem;
   }
 }

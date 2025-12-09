@@ -12,7 +12,7 @@
     <div class="nav-inner">
       <div class="nav-logo">DUHLOVE</div>
 
-      <!-- hamburger за всички размери -->
+      <!-- hamburger -->
       <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
         <span></span>
@@ -70,10 +70,10 @@
         </p>
 
         <div class="card-grid">
-          <!-- CARD 1 -->
-          <article class="card">
+          <!-- CARD 1 – Botanical Whimsy -> отваря галерия -->
+          <article class="card card-botanical" role="button" tabindex="0">
             <div class="card-image">
-              <img src="img/flower.jpeg" alt="Botanical Whimsy sample pattern" />
+              <img src="img/botanical/botanical-01.jpg" alt="Botanical Whimsy sample pattern" />
             </div>
             <div class="card-body">
               <h3>Botanical Whimsy</h3>
@@ -113,49 +113,176 @@
     </section>
   </main>
 
+  <!-- LIGHTBOX за Botanical Whimsy -->
+  <div class="lightbox" id="botanical-lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Botanical Whimsy gallery">
+      <button class="lightbox-close" aria-label="Close gallery">✕</button>
+      <button class="lightbox-arrow prev" aria-label="Previous image">‹</button>
+      <button class="lightbox-arrow next" aria-label="Next image">›</button>
+      <div class="lightbox-image-wrapper">
+        <img src="" alt="" class="lightbox-image" />
+      </div>
+      <div class="lightbox-caption"></div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>© <span id="year"></span> DuhLove · All rights reserved.</p>
   </footer>
 
-<script>
-  // set year
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  <script>
+    // година
+    const yearEl = document.getElementById("year");
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
 
-  const navToggle = document.querySelector(".nav-toggle");
-  const navLinks  = document.querySelector(".nav-links");
-  const navInner  = document.querySelector(".nav-inner");
+    // dropdown меню (hamburger)
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks  = document.querySelector(".nav-links");
+    const navInner  = document.querySelector(".nav-inner");
 
-  if (navToggle && navLinks && navInner) {
-    // open / close on hamburger click
-    navToggle.addEventListener("click", (event) => {
-      event.stopPropagation(); // не пуска клика нагоре
-      const isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
+    if (navToggle && navLinks && navInner) {
+      navToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = navLinks.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
 
-    // close when clicking a link
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!navLinks.classList.contains("open")) return;
+        if (navInner.contains(event.target)) return;
         navLinks.classList.remove("open");
         navToggle.setAttribute("aria-expanded", "false");
       });
+    }
+
+    // ---- LIGHTBOX / GALLERY за Botanical Whimsy ----
+ // колко снимки имаме в img/botanical/
+const BOTANICAL_COUNT = 8; // тук само сменяш числото при нови снимки
+
+const botanicalImages = Array.from({ length: BOTANICAL_COUNT }, (_, index) => {
+  const num = String(index + 1).padStart(2, "0"); // 1 -> "01", 2 -> "02", ...
+  return {
+    src: `img/botanical/botanical-${num}.jpg`,
+    alt: `Botanical Whimsy pattern ${index + 1} by Julia Duhlyovska`,
+    caption: `Botanical Whimsy · ${index + 1}`
+  };
+});
+
+
+    const lightbox       = document.getElementById("botanical-lightbox");
+    const lightboxImg    = lightbox.querySelector(".lightbox-image");
+    const lightboxCap    = lightbox.querySelector(".lightbox-caption");
+    const lightboxPrev   = lightbox.querySelector(".lightbox-arrow.prev");
+    const lightboxNext   = lightbox.querySelector(".lightbox-arrow.next");
+    const lightboxClose  = lightbox.querySelector(".lightbox-close");
+    const lightboxBack   = lightbox.querySelector(".lightbox-backdrop");
+    const cardBotanical  = document.querySelector(".card-botanical");
+
+    let botanicalIndex = 0;
+
+function updateArrows() {
+  if (!lightboxPrev || !lightboxNext) return;
+
+  const atFirst = botanicalIndex === 0;
+  const atLast  = botanicalIndex === botanicalImages.length - 1;
+
+  lightboxPrev.disabled = atFirst;
+  lightboxNext.disabled = atLast;
+
+  lightboxPrev.classList.toggle("disabled", atFirst);
+  lightboxNext.classList.toggle("disabled", atLast);
+}
+
+function showBotanicalSlide(index) {
+  if (!botanicalImages.length) return;
+
+  // ограничаваме между 0 и последния индекс
+  const lastIndex = botanicalImages.length - 1;
+  botanicalIndex = Math.max(0, Math.min(index, lastIndex));
+
+  const current = botanicalImages[botanicalIndex];
+  lightboxImg.src = current.src;
+  lightboxImg.alt = current.alt;
+  lightboxCap.textContent = current.caption;
+
+  updateArrows();
+}
+
+
+    function openBotanicalLightbox(startIndex = 0) {
+      if (!lightbox) return;
+      showBotanicalSlide(startIndex);
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeBotanicalLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+
+    if (cardBotanical) {
+      cardBotanical.addEventListener("click", () => openBotanicalLightbox(0));
+      // клавиатура (Enter / Space)
+      cardBotanical.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openBotanicalLightbox(0);
+        }
+      });
+    }
+
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showBotanicalSlide(botanicalIndex - 1);
+      });
+    }
+
+    if (lightboxNext) {
+      lightboxNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showBotanicalSlide(botanicalIndex + 1);
+      });
+    }
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeBotanicalLightbox();
+      });
+    }
+
+    if (lightboxBack) {
+      lightboxBack.addEventListener("click", () => {
+        closeBotanicalLightbox();
+      });
+    }
+
+    // затваряне с ESC + стрелки за навигация
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") {
+        closeBotanicalLightbox();
+      } else if (e.key === "ArrowRight") {
+        showBotanicalSlide(botanicalIndex + 1);
+      } else if (e.key === "ArrowLeft") {
+        showBotanicalSlide(botanicalIndex - 1);
+      }
     });
-
-    // close when clicking anywhere outside the navbar
-    document.addEventListener("click", (event) => {
-      if (!navLinks.classList.contains("open")) return;
-
-      // ако кликът е вътре в навбара – не затваряй (кликът по бутона/линковете вече е обработен)
-      if (navInner.contains(event.target)) return;
-
-      navLinks.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
-  }
-</script>
-
+  </script>
 </body>
 </html>
