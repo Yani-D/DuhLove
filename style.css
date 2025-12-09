@@ -422,6 +422,18 @@ body {
     padding: 0.5rem;
   }
 
+  /* ↓ новото ↓ */
+  .lightbox-image {
+    max-height: 65vh;
+  }
+
+  .lightbox-caption {
+    font-size: 0.9rem;
+    color: #f5f0ea;
+    padding: 0.4rem 0.75rem 0.8rem;
+    text-align: left;
+  }
+
   .lightbox-arrow.prev {
     left: 0.5rem;
   }
@@ -430,3 +442,4 @@ body {
     right: 0.5rem;
   }
 }
+
