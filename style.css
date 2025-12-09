@@ -51,7 +51,7 @@ body {
 .hero {
   position: relative;
   min-height: 70vh;
-  background-image: url("img/background.jpg"); /* 👉 ТУК СМЕНИ С ТВОЯ СНИМКА */
+  background-image: url("img/background.png"); /* 👉 ТУК СМЕНИ С ТВОЯ СНИМКА */
   background-size: cover;
   background-position: center;
   display: flex;
