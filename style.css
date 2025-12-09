@@ -343,17 +343,25 @@ body {
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #ffffffdd;
+
+  /* по-тъмно кръгче + бял контур, за да се вижда и на светло, и на тъмно */
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+
+  color: #ffffff;                 /* стрелката винаги бяла */
   cursor: pointer;
   font-size: 1.4rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  /* леко светеща рамка за още контраст */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
 }
+
 
 .lightbox-arrow.prev {
   left: 0.7rem;
