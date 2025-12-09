@@ -11,8 +11,19 @@
   <header class="navbar">
     <div class="nav-inner">
       <div class="nav-logo">DUHLOVE</div>
+
+      <!-- hamburger за всички размери -->
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- dropdown меню -->
       <nav class="nav-links">
         <a href="#top">Home</a>
+        <a href="#collection">Collection</a>
+        <a href="mailto:julity1@abv.bg">Contact</a>
       </nav>
     </div>
   </header>
@@ -51,7 +62,7 @@
     </section>
 
     <!-- COLLECTION SECTION -->
-    <section class="collection">
+    <section class="collection" id="collection">
       <div class="collection-inner">
         <h2>Design Collection</h2>
         <p class="collection-subtitle">
@@ -88,10 +99,10 @@
           <!-- CARD 3 -->
           <article class="card">
             <div class="card-image">
-              <img src="img/yoga.jpeg" alt="Modern Welness sample pattern" />
+              <img src="img/yoga.jpeg" alt="Modern Wellness sample pattern" />
             </div>
             <div class="card-body">
-              <h3>Modern Welness</h3>
+              <h3>Modern Wellness</h3>
               <p>
                 Folk-inspired motifs reimagined with a contemporary twist for modern interiors.
               </p>
@@ -106,8 +117,45 @@
     <p>© <span id="year"></span> DuhLove · All rights reserved.</p>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+  // set year
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks  = document.querySelector(".nav-links");
+  const navInner  = document.querySelector(".nav-inner");
+
+  if (navToggle && navLinks && navInner) {
+    // open / close on hamburger click
+    navToggle.addEventListener("click", (event) => {
+      event.stopPropagation(); // не пуска клика нагоре
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    // close when clicking a link
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // close when clicking anywhere outside the navbar
+    document.addEventListener("click", (event) => {
+      if (!navLinks.classList.contains("open")) return;
+
+      // ако кликът е вътре в навбара – не затваряй (кликът по бутона/линковете вече е обработен)
+      if (navInner.contains(event.target)) return;
+
+      navLinks.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  }
+</script>
+
 </body>
 </html>
